@@ -21,7 +21,7 @@ if($product->delete()){
     echo "equipment was deleted.";
 }
 
-// if unable to delete the product
+
 else{
     echo "Unable to delete equipment.";
 }
