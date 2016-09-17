@@ -21,55 +21,59 @@ function create(){
     $query = "INSERT INTO
                 " . $this->table_name . "
           (name,description,datetime) values('".$this->name."','".$this->description."','".$this->datetime."')";
-    // prepare query
-    $res = mysqli_query($this->conn,$query);
+      $res = mysqli_query($this->conn,$query);
   if($res)
   {
     return true;
   }
-  function readAll(){
-    $res = array();
-   $query = "SELECT * from equipments";
-   $result =  mysqli_query($this->conn,$query);
-   while ($row=mysqli_fetch_assoc($result)) {
-   array_push($res,$row);
-   }
-   return $res;
-     // select all query
-     //$query = "SELECT
-     // //            id, name, description, datetime, created
-     //         FROM
-     //             " . $this->table_name . "
-     //         ORDER BY
-     //             id DESC";
-     //
-     // // prepare query statement
-     // $stmt = $this->conn->prepare( $query );
-     //
-     // // execute query
-     // $stmt->execute();
-     //
-     // return $stmt;
-  }
-  function readOne(){
+
+}
+    // read equipment
+ function readAll(){
    $res = array();
-  $query = "SELECT * from equipments WHERE id=$this->id";
+  $query = "SELECT * from equipments";
   $result =  mysqli_query($this->conn,$query);
   while ($row=mysqli_fetch_assoc($result)) {
   array_push($res,$row);
   }
   return $res;
-
   }
-  function delete(){
+function readOne(){
+  $res = array();
+ $query = "SELECT * from equipments WHERE id=$this->id";
+ $result =  mysqli_query($this->conn,$query);
+ while ($row=mysqli_fetch_assoc($result)) {
+ array_push($res,$row);
+ }
+ return $res;
 
-      // delete query
-      $query = "DELETE FROM " . $this->table_name . " WHERE id = $this->id";
-      $result =  mysqli_query($this->conn,$query);
-      while ($row=mysqli_fetch_assoc($result)) {
-      array_push($res,$row);
-      }
-      return $res;
+}
+// update the equipment
+function update(){
+
+    // update query
+    $query = "UPDATE
+                " . $this->table_name . "
+            SET
+                name = '".$this->name."',
+                description = '".$this->description."',
+                datetime='".$this->datetime."'
+            WHERE
+                id = $this->id";
+                $result =  mysqli_query($this->conn,$query);
+                while ($row=mysqli_fetch_assoc($result)) {
+                array_push($res,$row);
+                }
+                return $res;
+  }
+function delete(){
+
+    // delete query
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = $this->id";
+    $result =  mysqli_query($this->conn,$query);
+    while ($row=mysqli_fetch_assoc($result)) {
+    array_push($res,$row);
     }
-
+    return $res;
   }
+}

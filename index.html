@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Read Products</title>
+    <title>equipment website</title>
 
     <!-- include material design CSS -->
     <link rel="stylesheet" href="css/materialize.min.css" />
@@ -71,7 +71,7 @@
 
             <div class="input-field col s12">
                 <textarea ng-model="description" type="text" class="validate materialize-textarea" placeholder="Type description here..."></textarea>
-                <label for="description">Maintanance_description</label>
+                <label for="description">Maintenance_description</label>
             </div>
 
 
@@ -99,11 +99,6 @@
     </div> <!-- end row -->
 </div> <!-- end container -->
 
-<!-- page content and controls will be here -->
-
-<!-- include jquery -->
-<!-- material design js -->
-<!-- include angular js -->
 <script src="js/angular.min.js"></script>
 <script src="js/jquery-3.1.0.js"></script>
 <script src="js/materialize.min.js"></script>
@@ -159,7 +154,6 @@ $scope.createProduct = function(){
         $scope.getAll();
     });
   }
-
 $scope.getAll = function(){
     $http.get("http://www.arshaanoop2015.com/equiments/server/read.php").success(function(response){
     console.log(response);
@@ -168,13 +162,6 @@ $scope.getAll = function(){
 }
 //$scope.getAll();
 $scope.readOne = function(id){
-    if(status==200)
-    {
-    Materialize.toast("equipment updated successfully", 4000);
-     }
-    else {
-        Materialize.toast("unable to  update", 4000);
-    }
 
     // change modal title
     $('#modal-product-title').text("Edit equipments");
@@ -252,16 +239,14 @@ $scope.deleteProduct = function(id){
             else {
                 Materialize.toast("unable to  delete", 4000);
             }
-            // refresh the list
-            $scope.getAll();
+                  $scope.getAll();
         });
     }
 }
 });
 
 $(document).ready(function(){
-    // initialize modal
-    $('.modal-trigger').leanModal();
+      $('.modal-trigger').leanModal();
 });
 </script>
 
